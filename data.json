@@ -1,5 +1,8 @@
-{
-  "WindSpeed": [3.2, 4.1, 5.0, 4.8],
-  "PowerOutput": [120, 150, 180, 170],
-  "Timestamps": ["10:00", "10:10", "10:20", "10:30"]
-}
+[
+  { "timestamp": "10:00", "tagName": "WindSpeed", "value": 3.2 },
+  { "timestamp": "10:10", "tagName": "WindSpeed", "value": 4.1 },
+  { "timestamp": "10:20", "tagName": "WindSpeed", "value": 5.0 },
+  { "timestamp": "10:00", "tagName": "PowerOutput", "value": 120 },
+  { "timestamp": "10:10", "tagName": "PowerOutput", "value": 150 },
+  { "timestamp": "10:20", "tagName": "PowerOutput", "value": 180 }
+]
