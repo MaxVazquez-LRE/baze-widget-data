@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GitHub API Widget</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    canvas { max-width: 600px; }
+  </style>
+</head>
+<body>
+  <h2>Wind Speed & Power Output</h2>
+  <canvas id="myChart"></canvas>
+
+  <script>
+    const apiUrl = "https://yourusername.github.io/yourrepo/data.json"; // Replace with your actual URL
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+          type: 'line',
+          data: {
+            labels: data.Timestamps,
+            datasets: [
+              {
+                label: 'Wind Speed (m/s)',
+                data: data.WindSpeed,
+                borderColor: 'blue',
+                fill: false
+              },
+              {
+                label: 'Power Output (kW)',
+                data: data.PowerOutput,
+                borderColor: 'green',
+                fill: false
+              }
+            ]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: { beginAtZero: true }
+            }
+          }
+        });
+      })
+      .catch(error => {
+        console.error("Error fetching data:", error);
+        document.body.innerHTML += "<p style='color:red;'>Failed to load data from GitHub API.</p>";
+      });
+  </script>
+</body>
+</html>
